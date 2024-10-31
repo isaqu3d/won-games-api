@@ -1,12 +1,16 @@
-import { mergeConfig, type UserConfig } from 'vite';
+const { defineConfig } = require("vite");
+const { merge } = require("lodash");
 
-export default (config: UserConfig) => {
-  // Important: always return the modified config
-  return mergeConfig(config, {
-    resolve: {
-      alias: {
-        '@': '/src',
+module.exports = (config: any) => {
+  let viteConfig = defineConfig({
+    server: {
+      fs: {
+        allow: ["/opt/node_modules", "/opt/app"],
       },
     },
   });
+
+  let mergedConfig = merge(config, viteConfig);
+
+  return mergedConfig;
 };
