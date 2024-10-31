@@ -24,6 +24,14 @@
     "short_description": {
       "type": "text"
     },
+    "description": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    },
     "price": {
       "type": "decimal",
       "required": true,
@@ -34,33 +42,19 @@
     },
     "rating": {
       "type": "enumeration",
-      "enum": [
-        "BR0",
-        "BR10",
-        "BR12",
-        "BR14",
-        "BR16",
-        "BR18"
-      ]
+      "enum": ["BR0", "BR10", "BR12", "BR14", "BR16", "BR18"]
     },
     "cover": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "gallery": {
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "videos",
-        "audios",
-        "files"
-      ]
+      "allowedTypes": ["images", "videos", "audios", "files"]
     },
     "categories": {
       "type": "relation",
@@ -85,14 +79,6 @@
       "relation": "manyToOne",
       "target": "api::publisher.publisher",
       "inversedBy": "games"
-    },
-    "description": {
-      "type": "customField",
-      "options": {
-        "output": "HTML",
-        "preset": "rich"
-      },
-      "customField": "plugin::ckeditor.CKEditor"
     }
   }
 }
