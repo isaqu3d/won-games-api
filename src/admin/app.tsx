@@ -1,3 +1,4 @@
+import Favicon from "./extensions/favicon.ico";
 import Icon from "./extensions/icon.png";
 import Logo from "./extensions/logo.svg";
 
@@ -6,8 +7,9 @@ export default {
     auth: {
       logo: Logo,
     },
+
     head: {
-      favicon: Icon,
+      favicon: Favicon,
     },
 
     menu: {
@@ -34,6 +36,7 @@ export default {
         },
       },
     },
+    tutorials: false,
 
     locales: [],
   },
