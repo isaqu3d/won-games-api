@@ -205,16 +205,17 @@ async function createGames(products) {
 
 export default factories.createCoreService(gameService, () => ({
   async populate(params) {
-    const gogApiUrl = `https://catalog.gog.com/v1/catalog?limit=48&order=desc%3Atrending`;
+    try {
+      const gogApiUrl = `https://catalog.gog.com/v1/catalog?limit=48&order=desc%3Atrending`;
 
-    const {
-      data: { products },
-    } = await axios.get(gogApiUrl);
+      const {
+        data: { products },
+      } = await axios.get(gogApiUrl);
 
-    await createManyToManyData([products[3]]);
-
-    await createGames([products[3]]);
-
-    //console.log(await getGameInfo(products[1].slug));
+      await createManyToManyData(products);
+      await createGames(products);
+    } catch (error) {
+      console.log("populate:", Exception(error));
+    }
   },
 }));
